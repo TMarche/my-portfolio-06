@@ -1,7 +1,7 @@
 function _Start({ startRef }: { startRef: React.RefObject<HTMLDivElement> }) {
     return (
         <div
-            className="relative min-h-screen flex flex-row justify-center items-center text-neutral-200"
+            className="relative min-h-screen flex flex-row justify-center items-center"
             ref={startRef}
         >
             {/* Triangle Gradients -- for large screens */}

@@ -34,7 +34,7 @@ function App() {
 
     return (
         <div
-            className="bg-neutral-900 text-white font-roboto"
+            className="bg-neutral-900 text-neutral-200 font-roboto"
             onScroll={handleScroll}
         >
             <Navigation
