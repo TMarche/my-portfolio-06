@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
+import Start from "./_Start/_Start";
+import About from "./_About/_About";
+import Contact from "./_Contact/_Contact";
+import Projects from "./_Projects/_Projects";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [scrollTop, setScrollTop] = useState(window.scrollY);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const handleScroll = () => {
+        setScrollTop(window.scrollY);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <div
+            className="bg-neutral-900 text-white font-roboto"
+            onScroll={handleScroll}
+        >
+            <Navigation scrollTop={scrollTop} />
+            <Start />
+            <About />
+            <Projects />
+            <Contact />
+            <Footer />
+        </div>
+    );
 }
 
-export default App
+export default App;
