@@ -1,6 +1,9 @@
-function _Start() {
+function _Start({ startRef }: { startRef: React.RefObject<HTMLDivElement> }) {
     return (
-        <div className="relative min-h-screen flex flex-row justify-center items-center text-neutral-200">
+        <div
+            className="relative min-h-screen flex flex-row justify-center items-center text-neutral-200"
+            ref={startRef}
+        >
             {/* Triangle Gradients -- for large screens */}
             <div
                 className="hidden lg:block absolute top-10 left-10 max-h-1/2 max-w-1/2 h-96 aspect-square rounded-tl-xl 

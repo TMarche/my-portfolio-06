@@ -7,7 +7,21 @@ const navPositionVariant = {
     hidden: { y: -56, transition: { duration: 0.2 } },
 };
 
-function Navigation({ scrollTop }: { scrollTop: number }) {
+function Navigation({
+    executeScroll,
+    scrollTop,
+    startRef,
+    aboutRef,
+    projectsRef,
+    contactRef,
+}: {
+    executeScroll: (scrollToRef: React.RefObject<HTMLDivElement>) => void;
+    scrollTop: number;
+    startRef: React.RefObject<HTMLDivElement>;
+    aboutRef: React.RefObject<HTMLDivElement>;
+    projectsRef: React.RefObject<HTMLDivElement>;
+    contactRef: React.RefObject<HTMLDivElement>;
+}) {
     const [isAnimating, setIsAnimating] = useState(false);
     const control = useAnimation();
 
@@ -28,7 +42,7 @@ function Navigation({ scrollTop }: { scrollTop: number }) {
             initial="hidden"
             variants={navPositionVariant}
             animate={control}
-            className={`z-50 flex flex-row justify-between fixed top-0 h-14 w-full bg-black bg-opacity-20 px-8 items-center duration-300`}
+            className={`z-50 flex flex-row justify-between fixed top-0 h-14 w-full bg-black bg-opacity-20 px-8 items-center duration-300 backdrop-blur`}
         >
             <div>troymarchesseault.dev</div>
             <nav className="h-full">
@@ -45,6 +59,7 @@ function Navigation({ scrollTop }: { scrollTop: number }) {
                         <button
                             className="px-4 h-full bg-black bg-opacity-0
                             hover:bg-opacity-30 duration-300"
+                            onClick={() => executeScroll(startRef)}
                         >
                             Start
                         </button>
@@ -53,6 +68,7 @@ function Navigation({ scrollTop }: { scrollTop: number }) {
                         <button
                             className="px-4 h-full bg-black bg-opacity-0
                             hover:bg-opacity-30 duration-300"
+                            onClick={() => executeScroll(aboutRef)}
                         >
                             About
                         </button>
@@ -61,6 +77,7 @@ function Navigation({ scrollTop }: { scrollTop: number }) {
                         <button
                             className="px-4 h-full bg-black bg-opacity-0
                             hover:bg-opacity-30 duration-300"
+                            onClick={() => executeScroll(projectsRef)}
                         >
                             Projects
                         </button>
@@ -69,6 +86,7 @@ function Navigation({ scrollTop }: { scrollTop: number }) {
                         <button
                             className="px-4 h-full bg-black bg-opacity-0
                             hover:bg-opacity-30 duration-300"
+                            onClick={() => executeScroll(contactRef)}
                         >
                             Contact
                         </button>
